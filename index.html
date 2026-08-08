@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Johamas Kiduuka - Node Alpha</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500;700;800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style> body { font-family: 'Inter', sans-serif; } </style>
+</head>
+<body class="min-h-screen bg-[#F6EEDD] pb-24 text-[#24170F]">
+  <header class="bg-[#1F4B33] text-white">
+    <div class="mx-auto flex max-w-3xl items-center justify-between p-4">
+      <div>
+        <h1 class="text-xs font-bold uppercase tracking-wider text-[#E8A93D]">Minor Receiver Node</h1>
+        <span class="text-lg font-extrabold tracking-tight">Node Alpha (Green Hub)</span>
+      </div>
+      <span class="rounded-full bg-emerald-500/25 px-3 py-1 text-xs font-bold text-emerald-300">Active</span>
+    </div>
+    <div class="h-2 w-full bg-[#E8A93D]"></div>
+  </header>
+
+  <main class="mx-auto max-w-3xl p-4 space-y-4">
+    <div class="rounded-2xl border bg-white p-6 shadow-sm border-emerald-900/20">
+      <h2 class="text-sm font-bold text-[#1F4B33] mb-4 flex items-center gap-2">
+        <i data-lucide="box" class="h-4 w-4"></i> Assigned Orders - Alpha
+      </h2>
+      <div id="alpha-orders" class="space-y-3">
+        <p class="text-xs text-center text-[#8A7A63] py-6">Loading orders for Alpha...</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const SUPABASE_URL = "https://arndidkfyuozpwsxvdko.supabase.co";
+    const SUPABASE_ANON_KEY = "sb_publishable_fJAa7l45sUbavx2PxNhTZA_FLPohiaa";
+    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    async function loadAlphaOrders() {
+      const { data: orders, error } = await sb.from("orders").select("*").order("created_at", { ascending: false });
+      const container = document.getElementById("alpha-orders");
+      
+      if(error || !orders) {
+        container.innerHTML = `<p class="text-xs text-center text-red-500">Failed to fetch node orders.</p>`;
+        return;
+      }
+
+      if(orders.length === 0) {
+        container.innerHTML = `<p class="text-xs text-center text-[#8A7A63]">No incoming orders currently assigned to Alpha.</p>`;
+        return;
+      }
+
+      container.innerHTML = orders.map(o => {
+        const isConfirmed = o.status === 'confirmed';
+        return `
+          <div class="p-4 rounded-xl border bg-emerald-50/30 flex justify-between items-center">
+            <div>
+              <span class="font-mono text-xs font-bold text-[#1F4B33]">#${o.id.slice(0,8)}</span>
+              <p class="text-xs text-[#24170F] mt-1">Contact: <span class="font-mono font-bold">${o.contact}</span></p>
+              <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded ${isConfirmed ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">${o.status || 'Pending'}</span>
+            </div>
+            <div class="text-right">
+              <span class="font-mono text-xs font-bold text-[#1F4B33] block">UGX ${Number(o.total).toLocaleString()}</span>
+              ${!isConfirmed ? `<button onclick="confirmOrder('${o.id}')" class="mt-2 rounded-lg bg-[#1F4B33] px-3 py-1 text-xs font-bold text-white hover:bg-[#153423]">Confirm Order</button>` : '<span class="mt-2 inline-block text-xs font-bold text-emerald-600">Confirmed ✓</span>'}
+            </div>
+          </div>
+        `;
+      }).join("");
+      lucide.createIcons();
+    }
+
+    async function confirmOrder(id) {
+      await sb.from("orders").update({ status: 'confirmed' }).eq("id", id);
+      loadAlphaOrders();
+    }
+
+    setInterval(loadAlphaOrders, 5000);
+    loadAlphaOrders();
+  </script>
+</body>
+</html>
