@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Johamas Kiduuka - Alpha Minor Receiver Node</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&family=Ubuntu:wght@500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Supabase JS Client v2 -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Space Mono', 'monospace'],
+                        ubuntu: ['Ubuntu', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121A15;
+            color: #F6EEDD;
+            padding-bottom: 6rem;
+        }
+        .font-mono-custom {
+            font-family: 'Space Mono', monospace;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased">
+
+    <!-- HEADER SECTION -->
+    <header class="w-full bg-[#18261F] border-b border-[#1F4B33]/40 sticky top-0 z-40 shadow-xl">
+        <div class="max-w-6xl mx-auto px-4 py-3.5 flex items-center justify-between">
+            
+            <!-- Brand Logo & Title -->
+            <div class="flex items-center gap-3">
+                <div class="p-2.5 bg-[#1F4B33] rounded-xl flex items-center justify-center border border-[#E8A93D]/30 shadow-inner">
+                    <i data-lucide="cpu" class="w-6 h-6 text-[#E8A93D]"></i>
+                </div>
+                <div>
+                    <div class="text-[10px] font-bold uppercase tracking-widest text-[#E8A93D]">Minor Receiver Node</div>
+                    <h1 class="text-base font-extrabold font-ubuntu tracking-tight text-white">Johamas Hub Alpha</h1>
+                </div>
+            </div>
+
+            <!-- Header Actions / Status -->
+            <div class="flex items-center gap-3">
+                <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-[#121A15] rounded-full border border-[#1F4B33]">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span id="node-status" class="text-xs font-mono-custom text-[#8A7A63]">Zone: Kampala Central (Active)</span>
+                </div>
+                <button id="refresh-alpha-btn" class="p-2.5 bg-[#121A15] hover:bg-[#1a2821] text-white rounded-xl transition border border-[#1F4B33] flex items-center gap-1.5 text-xs font-bold">
+                    <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                    <span class="hidden md:inline">Sync Node</span>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Kitenge Divider Bar -->
+        <div class="h-1.5 w-full" style="background: repeating-linear-gradient(45deg, #1F4B33, #1F4B33 10px, #C1502E 10px, #C1502E 20px, #E8A93D 20px, #E8A93D 30px, #24170F 30px, #24170F 40px);"></div>
+    </header>
+
+    <!-- METRICS OVERVIEW BAR -->
+    <section class="max-w-6xl mx-auto w-full px-4 mt-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3.5">
+            <!-- Metric 1 -->
+            <div class="bg-[#18261F] border border-[#1F4B33]/50 p-4 rounded-2xl shadow-sm">
+                <div class="flex items-center justify-between text-[#8A7A63] mb-1">
+                    <span class="text-[11px] font-bold uppercase tracking-wider">Assigned Orders</span>
+                    <i data-lucide="box" class="w-4 h-4 text-[#E8A93D]"></i>
+                </div>
+                <div id="metric-alpha-orders" class="text-xl font-extrabold font-mono-custom text-white">0</div>
+            </div>
+            <!-- Metric 2 -->
+            <div class="bg-[#18261F] border border-[#1F4B33]/50 p-4 rounded-2xl shadow-sm">
+                <div class="flex items-center justify-between text-[#8A7A63] mb-1">
+                    <span class="text-[11px] font-bold uppercase tracking-wider">Pending Pickup</span>
+                    <i data-lucide="clock" class="w-4 h-4 text-amber-400"></i>
+                </div>
+                <div id="metric-alpha-pending" class="text-xl font-extrabold font-mono-custom text-white">0</div>
+            </div>
+            <!-- Metric 3 -->
+            <div class="bg-[#18261F] border border-[#1F4B33]/50 p-4 rounded-2xl shadow-sm">
+                <div class="flex items-center justify-between text-[#8A7A63] mb-1">
+                    <span class="text-[11px] font-bold uppercase tracking-wider">Node Revenue</span>
+                    <i data-lucide="wallet" class="w-4 h-4 text-[#E8A93D]"></i>
+                </div>
+                <div id="metric-alpha-revenue" class="text-xl font-extrabold font-mono-custom text-white">UGX 0</div>
+            </div>
+            <!-- Metric 4 -->
+            <div class="bg-[#18261F] border border-[#1F4B33]/50 p-4 rounded-2xl shadow-sm">
+                <div class="flex items-center justify-between text-[#8A7A63] mb-1">
+                    <span class="text-[11px] font-bold uppercase tracking-wider">Node Phone</span>
+                    <i data-lucide="phone-call" class="w-4 h-4 text-emerald-400"></i>
+                </div>
+                <div class="text-sm font-extrabold font-mono-custom text-emerald-400 pt-1">0770000001</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTROL AREA -->
+    <main class="max-w-6xl mx-auto w-full px-4 flex-1 mt-6 space-y-6">
+        
+        <!-- Controls & Filter Toolbar -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-[#18261F] p-4 rounded-2xl border border-[#1F4B33]/50">
+            <!-- Search Input -->
+            <div class="relative flex-1">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                    <i data-lucide="search" class="w-4 h-4 text-[#8A7A63]"></i>
+                </span>
+                <input type="text" id="alpha-search-input" placeholder="Search Alpha queue by buyer contact, ID, or item title..." 
+                    class="w-full pl-10 pr-4 py-2 bg-[#121A15] text-white placeholder-[#8A7A63] text-xs rounded-xl focus:outline-none focus:ring-2 focus:ring-[#E8A93D] border border-[#1F4B33] transition">
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
+                <button data-filter="all" class="alpha-filter-btn px-3.5 py-2 text-xs font-bold rounded-xl transition bg-[#E8A93D] text-[#121A15]">All Alpha Orders</button>
+                <button data-filter="assigned" class="alpha-filter-btn px-3.5 py-2 text-xs font-bold rounded-xl transition bg-[#121A15] text-[#8A7A63] hover:text-white">Assigned</button>
+                <button data-filter="dispatched" class="alpha-filter-btn px-3.5 py-2 text-xs font-bold rounded-xl transition bg-[#121A15] text-[#8A7A63] hover:text-white">Dispatched</button>
+                <button data-filter="completed" class="alpha-filter-btn px-3.5 py-2 text-xs font-bold rounded-xl transition bg-[#121A15] text-[#8A7A63] hover:text-white">Completed</button>
+            </div>
+        </div>
+
+        <!-- ALPHA ORDERS TABLE CONTAINER -->
+        <div class="bg-[#18261F] rounded-2xl border border-[#1F4B33]/50 overflow-hidden shadow-xl">
+            <div class="p-4 border-b border-[#1F4B33]/50 flex items-center justify-between">
+                <div>
+                    <h3 class="text-sm font-bold font-ubuntu text-white">Johamas Hub Alpha - Local Queue</h3>
+                    <p class="text-xs text-[#8A7A63] mt-0.5">Orders routed specifically to the Kampala Central minor receiver node.</p>
+                </div>
+                <span class="text-[10px] font-mono-custom font-bold uppercase tracking-wider bg-[#1F4B33] text-[#E8A93D] px-2.5 py-1 rounded-lg border border-[#E8A93D]/20">
+                    Node: Alpha-01
+                </span>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-[#121A15] text-[11px] font-bold uppercase tracking-wider text-[#8A7A63] border-b border-[#1F4B33]/50">
+                            <th class="py-3.5 px-4">Order ID</th>
+                            <th class="py-3.5 px-4">Item Title</th>
+                            <th class="py-3.5 px-4">Buyer Contact</th>
+                            <th class="py-3.5 px-4">Total Amount</th>
+                            <th class="py-3.5 px-4">Status</th>
+                            <th class="py-3.5 px-4 text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="alpha-table-body" class="divide-y divide-[#1F4B33]/20 text-xs font-medium">
+                        <!-- Dynamic rows injected here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Empty Table State -->
+            <div id="alpha-empty-state" class="hidden py-16 text-center">
+                <i data-lucide="package-open" class="w-10 h-10 text-[#8A7A63] mx-auto mb-2 opacity-50"></i>
+                <p class="text-xs font-bold text-white">No orders assigned to Hub Alpha</p>
+                <p class="text-[11px] text-[#8A7A63] mt-0.5">Incoming orders routed to this node will appear here automatically.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ALPHA ORDER DETAIL MODAL -->
+    <div id="alpha-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-[#18261F] w-full max-w-md rounded-2xl p-6 shadow-2xl border border-[#1F4B33] relative text-[#F6EEDD]">
+            <button id="alpha-modal-close" class="absolute top-4 right-4 text-[#8A7A63] hover:text-white p-1">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="mb-4">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-[#E8A93D]">Hub Alpha Inspection</span>
+                <h3 id="alpha-modal-title" class="text-base font-extrabold font-ubuntu text-white mt-0.5">Order Details</h3>
+            </div>
+
+            <div class="space-y-4 text-xs">
+                <div class="bg-[#121A15] p-3.5 rounded-xl border border-[#1F4B33] space-y-2">
+                    <div class="flex justify-between"><span class="text-[#8A7A63]">Order UUID:</span> <span id="alpha-modal-id" class="font-mono-custom text-white">-</span></div>
+                    <div class="flex justify-between"><span class="text-[#8A7A63]">Item:</span> <span id="alpha-modal-item" class="font-bold text-white">-</span></div>
+                    <div class="flex justify-between"><span class="text-[#8A7A63]">Buyer Phone:</span> <span id="alpha-modal-buyer" class="font-mono-custom text-white">-</span></div>
+                    <div class="flex justify-between"><span class="text-[#8A7A63]">Amount:</span> <span id="alpha-modal-price" class="font-mono-custom text-[#E8A93D]">-</span></div>
+                    <div class="flex justify-between"><span class="text-[#8A7A63]">Timestamp:</span> <span id="alpha-modal-time" class="font-mono-custom text-white">-</span></div>
+                </div>
+
+                <div class="flex items-center gap-2 pt-2">
+                    <button id="alpha-modal-dispatch" class="flex-1 py-2.5 bg-[#E8A93D] hover:bg-[#d89932] text-[#121A15] text-xs font-bold rounded-xl transition shadow">
+                        Mark Dispatched
+                    </button>
+                    <button id="alpha-modal-complete" class="flex-1 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-xl transition shadow">
+                        Mark Completed
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Supabase Initialization
+        const SUPABASE_URL = 'https://placeholder-project.supabase.co';
+        const SUPABASE_ANON_KEY = 'placeholder-anon-key';
+        const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+        // Alpha Node State
+        const alphaState = {
+            nodeName: 'Johamas Hub Alpha',
+            orders: [],
+            filter: 'all',
+            search: '',
+            selectedOrder: null
+        };
+
+        function formatUGX(amount) {
+            return 'UGX ' + Number(amount).toLocaleString();
+        }
+
+        async function initAlphaNode() {
+            try {
+                if (supabaseClient) {
+                    const { data, error } = await supabaseClient.from('orders').select('*').eq('assigned_receiver', alphaState.nodeName).order('created_at', { ascending: false });
+                    if (!error && data && data.length > 0) {
+                        alphaState.orders = data;
+                    }
+                }
+            } catch (err) {
+                console.warn('Supabase fetch offline/mock mode:', err);
+            }
+
+            // Fallback mock orders assigned to Hub Alpha if empty
+            if (alphaState.orders.length === 0) {
+                alphaState.orders = [
+                    {
+                        id: 'ord-9921',
+                        title: 'Authentic Kitenge African Print Shirt',
+                        buyer_username: '0771234567',
+                        assigned_receiver: 'Johamas Hub Alpha',
+                        total_price: 50000,
+                        status: 'assigned',
+                        created_at: new Date(Date.now() - 3600000 * 2).toISOString()
+                    },
+                    {
+                        id: 'ord-9924',
+                        title: 'Handmade Beaded Leather Sandals',
+                        buyer_username: '0709988776',
+                        assigned_receiver: 'Johamas Hub Alpha',
+                        total_price: 30000,
+                        status: 'dispatched',
+                        created_at: new Date(Date.now() - 3600000 * 6).toISOString()
+                    }
+                ];
+            }
+
+            renderAlphaNode();
+            setupAlphaEventListeners();
+        }
+
+        function renderAlphaNode() {
+            const assignedOrders = alphaState.orders.filter(o => o.assigned_receiver === alphaState.nodeName);
+            const pendingCount = assignedOrders.filter(o => o.status === 'assigned').length;
+            const totalRevenue = assignedOrders.reduce((acc, o) => acc + Number(o.total_price || 0), 0);
+
+            document.getElementById('metric-alpha-orders').textContent = assignedOrders.length;
+            document.getElementById('metric-alpha-pending').textContent = pendingCount;
+            document.getElementById('metric-alpha-revenue').textContent = formatUGX(totalRevenue);
+
+            // Filter button active states
+            document.querySelectorAll('.alpha-filter-btn').forEach(btn => {
+                const f = btn.getAttribute('data-filter');
+                if (f === alphaState.filter) {
+                    btn.className = 'alpha-filter-btn px-3.5 py-2 text-xs font-bold rounded-xl transition bg-[#E8A93D] text-[#121A15] shadow';
+                } else {
+                    btn.className = 'alpha-filter-btn px-3.5 py-2 text-xs font-bold rounded-xl transition bg-[#121A15] text-[#8A7A63] hover:text-white';
+                }
+            });
+
+            // Filter & Search logic
+            const filtered = assignedOrders.filter(o => {
+                const matchesFilter = alphaState.filter === 'all' || o.status === alphaState.filter;
+                const query = alphaState.search.toLowerCase();
+                const matchesSearch = !query || 
+                    (o.id && o.id.toLowerCase().includes(query)) ||
+                    (o.buyer_username && o.buyer_username.toLowerCase().includes(query)) ||
+                    (o.title && o.title.toLowerCase().includes(query));
+                return matchesFilter && matchesSearch;
+            });
+
+            const tbody = document.getElementById('alpha-table-body');
+            const emptyState = document.getElementById('alpha-empty-state');
+
+            if (filtered.length === 0) {
+                emptyState.classList.remove('hidden');
+                tbody.innerHTML = '';
+            } else {
+                emptyState.classList.add('hidden');
+                tbody.innerHTML = filtered.map(o => {
+                    let badgeColor = 'bg-amber-500/10 text-amber-400 border-amber-500/20';
+                    if (o.status === 'dispatched') badgeColor = 'bg-blue-500/10 text-blue-400 border-blue-500/20';
+                    if (o.status === 'completed') badgeColor = 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
+
+                    return `
+                        <tr class="hover:bg-[#121A15]/50 transition">
+                            <td class="py-3 px-4 font-mono-custom font-bold text-white">${o.id}</td>
+                            <td class="py-3 px-4 font-medium text-white max-w-[220px] truncate">${o.title || 'Marketplace Item'}</td>
+                            <td class="py-3 px-4 font-mono-custom text-[#8A7A63]">${o.buyer_username}</td>
+                            <td class="py-3 px-4 font-mono-custom font-bold text-white">${formatUGX(o.total_price)}</td>
+                            <td class="py-3 px-4">
+                                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${badgeColor}">
+                                    ${o.status}
+                                </span>
+                            </td>
+                            <td class="py-3 px-4 text-right">
+                                <button onclick="openAlphaModal('${o.id}')" class="px-2.5 py-1.5 bg-[#121A15] hover:bg-[#1a2821] text-white rounded-lg border border-[#1F4B33] transition font-bold text-[11px]">
+                                    Inspect
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+            }
+
+            if (window.lucide) window.lucide.createIcons();
+        }
+
+        function setupAlphaEventListeners() {
+            document.getElementById('alpha-search-input').addEventListener('input', (e) => {
+                alphaState.search = e.target.value;
+                renderAlphaNode();
+            });
+
+            document.querySelectorAll('.alpha-filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    alphaState.filter = btn.getAttribute('data-filter');
+                    renderAlphaNode();
+                });
+            });
+
+            document.getElementById('refresh-alpha-btn').addEventListener('click', () => {
+                const btnIcon = document.querySelector('#refresh-alpha-btn i');
+                btnIcon.classList.add('animate-spin');
+                setTimeout(() => {
+                    btnIcon.classList.remove('animate-spin');
+                    renderAlphaNode();
+                }, 600);
+            });
+
+            document.getElementById('alpha-modal-close').addEventListener('click', closeAlphaModal);
+            document.getElementById('alpha-modal').addEventListener('click', (e) => {
+                if (e.target.id === 'alpha-modal') closeAlphaModal();
+            });
+
+            document.getElementById('alpha-modal-dispatch').addEventListener('click', () => {
+                if (alphaState.selectedOrder) {
+                    alphaState.selectedOrder.status = 'dispatched';
+                    closeAlphaModal();
+                    renderAlphaNode();
+                }
+            });
+
+            document.getElementById('alpha-modal-complete').addEventListener('click', () => {
+                if (alphaState.selectedOrder) {
+                    alphaState.selectedOrder.status = 'completed';
+                    closeAlphaModal();
+                    renderAlphaNode();
+                }
+            });
+        }
+
+        function openAlphaModal(orderId) {
+            const order = alphaState.orders.find(o => o.id === orderId);
+            if (!order) return;
+            alphaState.selectedOrder = order;
+
+            document.getElementById('alpha-modal-id').textContent = order.id;
+            document.getElementById('alpha-modal-item').textContent = order.title || 'Marketplace Item';
+            document.getElementById('alpha-modal-buyer').textContent = order.buyer_username;
+            document.getElementById('alpha-modal-price').textContent = formatUGX(order.total_price);
+            document.getElementById('alpha-modal-time').textContent = new Date(order.created_at).toLocaleString();
+
+            document.getElementById('alpha-modal').classList.remove('hidden');
+        }
+
+        function closeAlphaModal() {
+            document.getElementById('alpha-modal').classList.add('hidden');
+            alphaState.selectedOrder = null;
+        }
+
+        window.addEventListener('DOMContentLoaded', initAlphaNode);
+    </script>
+</body>
+</html>
