@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emrine — Luxury Web Designer & UI Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-dark: #0A0C10;
+    --bg-card: rgba(18, 22, 31, 0.75);
+    --border: rgba(255, 255, 255, 0.08);
+    --border-gold: rgba(212, 175, 55, 0.3);
+    --text-main: #F0F2F5;
+    --text-muted: #94A3B8;
+    --gold: #D4AF37;
+    --gold-glow: rgba(212, 175, 55, 0.15);
+    --emerald: #10B981;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .brand {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.02em;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+  /* BACKGROUND LIGHTING EFFECTS */
+  .bg-glow-1 {
+    position: absolute;
+    top: -100px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(10, 12, 16, 0) 70%);
+    pointer-events: none; z-index: 0;
+  }
+
+  .bg-glow-2 {
+    position: absolute;
+    top: 800px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(10, 12, 16, 0) 70%);
+    pointer-events: none; z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10, 12, 16, 0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 40px;
+  }
+  nav .brand { font-size: 22px; font-weight: 700; color: var(--gold); }
+  nav ul { list-style: none; display: flex; gap: 32px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; }
+  nav a { transition: color 0.3s ease; }
+  nav a:hover { color: var(--gold); }
+  nav .cta {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em;
+    border: 1px solid var(--border-gold);
+    border-radius: 4px; padding: 10px 20px;
+    background: rgba(212, 175, 55, 0.05);
+    transition: all 0.3s ease;
+  }
+  nav .cta:hover { background: var(--gold); color: #000; box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
+
+  /* HERO */
+  header.hero {
+    position: relative;
+    padding: 120px 0 100px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(10, 12, 16, 0.4) 0%, var(--bg-dark) 100%),
+                url('https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQdMyFNxZPdaNRdXCwrpMjChJr8f9xnNGJFw7oiIWF5LFAEbUfPZViKezl4M1DC5UShzfdpd6tsT4VU8EU') center/cover no-repeat;
+  }
+  .hero-inner { position: relative; z-index: 1; text-align: center; max-width: 860px; margin: 0 auto; }
+  .hero-eyebrow {
+    font-size: 13px; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 20px;
+  }
+  h1.hero-name {
+    font-size: clamp(40px, 5.5vw, 68px);
+    line-height: 1.15; font-weight: 600;
+    background: linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero-statement {
+    margin: 24px auto 0;
+    max-width: 620px; font-size: 18px; color: var(--text-muted); font-weight: 300;
+  }
+  .hero-actions {
+    margin-top: 40px; display: flex; gap: 18px; justify-content: center;
+  }
+  .btn-primary {
+    background: var(--gold); color: #000;
+    padding: 14px 32px; border-radius: 4px;
+    font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+    transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(212, 175, 55, 0.4); }
+  .btn-secondary {
+    padding: 14px 32px; border-radius: 4px;
+    border: 1px solid var(--border); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+    background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+  .btn-secondary:hover { border-color: var(--text-main); background: rgba(255, 255, 255, 0.08); }
+
+  /* SECTIONS */
+  section { padding: 100px 0; border-bottom: 1px solid var(--border); position: relative; }
+  .section-head { margin-bottom: 60px; text-align: center; }
+  .section-head .kicker { font-size: 12px; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 12px; }
+  .section-head h2 { font-size: clamp(28px, 3vw, 42px); color: #FFF; }
+  .section-head p { margin: 12px auto 0; max-width: 540px; color: var(--text-muted); font-size: 15px; }
+
+  /* WORK CARDS */
+  .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .work-card {
+    border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+    background: var(--bg-card); backdrop-filter: blur(20px);
+    display: flex; flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .work-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--border-gold);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(212, 175, 55, 0.1);
+  }
+
+  .browser-frame {
+    aspect-ratio: 16/10;
+    background: #12151C;
+    display: flex; flex-direction: column;
+    border-bottom: 1px solid var(--border);
+  }
+  .browser-bar {
+    height: 38px; background: rgba(255, 255, 255, 0.03);
+    display: flex; align-items: center; gap: 6px; padding: 0 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .browser-bar .dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(255, 255, 255, 0.2); }
+  .browser-bar .url {
+    margin-left: 12px; font-size: 11px; color: var(--text-muted);
+    background: rgba(0, 0, 0, 0.4); border-radius: 4px; padding: 4px 12px;
+    flex: 1; max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .browser-body { flex: 1; overflow: hidden; position: relative; }
+  .browser-body img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 0.5s ease; }
+  .work-card:hover .browser-body img { transform: scale(1.05); }
+
+  .work-body { padding: 32px; flex: 1; display: flex; flex-direction: column; }
+  .work-body .tag { font-size: 11px; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 10px; }
+  .work-body h3 { font-size: 22px; color: #FFF; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+  .work-body p { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; flex: 1; font-weight: 300; }
+  .work-link {
+    font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+    color: #FFF; border: 1px solid var(--border); border-radius: 4px;
+    padding: 12px 20px; display: inline-flex; align-items: center; gap: 10px; width: fit-content;
+    background: rgba(255, 255, 255, 0.02); transition: all 0.3s ease;
+  }
+  .work-card:hover .work-link { background: var(--gold); border-color: var(--gold); color: #000; }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .skill-item {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 28px; backdrop-filter: blur(10px);
+    transition: border-color 0.3s ease;
+  }
+  .skill-item:hover { border-color: var(--border-gold); }
+  .skill-item .level { font-size: 11px; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+  .skill-item h4 { font-size: 16px; color: #FFF; margin-bottom: 8px; }
+  .skill-item p { font-size: 13px; color: var(--text-muted); font-weight: 300; }
+
+  .tools-row { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .tools-row span {
+    font-size: 12px; color: var(--text-muted); border: 1px solid var(--border);
+    border-radius: 30px; padding: 8px 18px; background: rgba(255, 255, 255, 0.02);
+  }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 320px 1fr; gap: 60px; align-items: center; }
+  .about-portrait-frame {
+    position: relative; border-radius: 12px; padding: 8px;
+    background: linear-gradient(135deg, var(--border-gold), transparent);
+  }
+  .about-portrait {
+    aspect-ratio: 1/1; border-radius: 8px; overflow: hidden;
+    background: url('https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcQEkVpcB5yop37F03k_oE0T7Tuv6t7k8CARQW6B4gEvEa20ffCHeh5a9x2CZbOeJqvZrVoMZDGZ5d6Bkoc') center/cover no-repeat;
+    border: 1px solid var(--border);
+  }
+  .about-text p { font-size: 16px; color: var(--text-muted); margin-bottom: 20px; font-weight: 300; }
+  .about-facts { margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .about-facts .label { font-size: 11px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+  .about-facts .value { font-size: 15px; color: #FFF; font-weight: 500; }
+
+  /* CONTACT & FOOTER */
+  footer { padding: 100px 0 40px; position: relative; text-align: center; }
+  footer h2 { font-size: clamp(32px, 4vw, 52px); color: #FFF; }
+  footer .sub { margin: 16px auto 0; color: var(--text-muted); font-size: 16px; max-width: 520px; font-weight: 300; }
+  
+  .contact-buttons { display: flex; gap: 20px; justify-content: center; margin-top: 40px; }
+  .contact-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+    background: var(--gold); color: #000; padding: 16px 36px; border-radius: 4px;
+    transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
+  }
+  .contact-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(212, 175, 55, 0.4); }
+  .contact-btn.secondary {
+    background: rgba(255, 255, 255, 0.03); color: #FFF; border: 1px solid var(--border); box-shadow: none;
+  }
+  .contact-btn.secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+  .footer-meta {
+    margin-top: 100px; padding-top: 32px; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; font-size: 13px; color: var(--text-muted);
+  }
+  .footer-meta ul { list-style: none; display: flex; gap: 24px; }
+
+  @media (max-width: 860px) {
+    .work-grid, .about-grid, .skills-grid { grid-template-columns: 1fr; }
+    nav ul { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-glow-1"></div>
+<div class="bg-glow-2"></div>
+
+<nav>
+  <a class="brand" href="#">Emrine</a>
+  <ul>
+    <li><a href="#work">Portfolio</a></li>
+    <li><a href="#skills">Capabilities</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a class="cta" href="#contact">Inquire</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Digital Craftsman & UI Developer</div>
+    <h1 class="hero-name">Bespoke Web Design for High-End Brands</h1>
+    <p class="hero-statement">Tailored digital experiences combining modern minimalism, precise typography, and effortless performance.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#work">Explore Portfolio</a>
+      <a class="btn-secondary" href="#contact">Get In Touch</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Selected Works</div>
+        <h2>Live Web Platforms</h2>
+        <p>Interactive web builds showcasing refined design systems and seamless e-commerce performance.</p>
+      </div>
+
+      <div class="work-grid">
+
+        <!-- PROJECT 1: HAMIM FURNITURE -->
+        <a class="work-card" href="https://hamimfurniture.vercel.app/" target="_blank" rel="noopener">
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="url">hamimfurniture.vercel.app</span>
+            </div>
+            <div class="browser-body">
+              <img src="https://api.microlink.io/?url=https%3A%2F%2Fhamimfurniture.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Hamim Furniture Web Preview" loading="lazy">
+            </div>
+          </div>
+          <div class="work-body">
+            <div class="tag">E-Commerce & Interior Showcase</div>
+            <h3>Hamim Furniture</h3>
+            <p>Luxury furniture web application featuring intuitive product discovery and streamlined purchasing flows.</p>
+            <span class="work-link">Launch Experience →</span>
+          </div>
+        </a>
+
+        <!-- PROJECT 2: JOHA ONLINE -->
+        <a class="work-card" href="https://johamas.vercel.app/" target="_blank" rel="noopener">
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="url">johamas.vercel.app</span>
+            </div>
+            <div class="browser-body">
+              <img src="https://api.microlink.io/?url=https%3A%2F%2Fjohamas.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Joha Online Web Preview" loading="lazy">
+            </div>
+          </div>
+          <div class="work-body">
+            <div class="tag">Bespoke Retail Platform</div>
+            <h3>Joha Online</h3>
+            <p>Modern online store environment focused on high-speed mobile navigation and refined visual hierarchy.</p>
+            <span class="work-link">Launch Experience →</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Core Expertise</div>
+        <h2>Technical Capabilities</h2>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-item"><div class="level">01. Visual</div><h4>Digital Art Direction</h4><p>Custom layouts and typography designed to establish brand authority.</p></div>
+        <div class="skill-item"><div class="level">02. Engineering</div><h4>Responsive Front-End</h4><p>Clean, semantic code ensuring fluid execution across all device sizes.</p></div>
+        <div class="skill-item"><div class="level">03. Systems</div><h4>Design Systems</h4><p>Modular, scalable component libraries for long-term consistency.</p></div>
+      </div>
+
+      <div class="tools-row">
+        <span>Figma</span><span>HTML5 / CSS3</span><span>JavaScript</span><span>Webflow</span><span>Framer</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="about-portrait-frame">
+        <div class="about-portrait"></div>
+      </div>
+      <div class="about-text">
+        <p>I am Emrine, a web designer specializing in high-converting, aesthetically focused digital platforms.</p>
+        <p>Every line of code and layout choice is calculated to deliver an effortless experience for your clients while elevating your brand identity.</p>
+        <div class="about-facts">
+          <div><div class="label">Specialization</div><div class="value">Web Design & Development</div></div>
+          <div><div class="label">Status</div><div class="value">Available for Select Projects</div></div>
+          <div><div class="label">Direct Phone</div><div class="value">0727228128</div></div>
+          <div><div class="label">Email Contact</div><div class="value">Empraemzo9@gmail.com</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Initiate a Project</h2>
+    <p class="sub">Available for new design initiatives, brand platforms, and web applications.</p>
+
+    <div class="contact-buttons">
+      <a class="contact-btn" href="mailto:Empraemzo9@gmail.com">Send Email Inquiry</a>
+      <a class="contact-btn secondary" href="tel:0727228128">Direct Call / WhatsApp</a>
+    </div>
+
+    <div class="footer-meta">
+      <span>© 2026 Emrine. All Rights Reserved.</span>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
