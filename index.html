@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<!-- ============ SEO & META TAGS ============ -->
+<title>Jocelyn Web Designers | Web Design &amp; Development Studio</title>
+<meta name="description" content="Jocelyn Web Designers builds fast, mobile-friendly, search-optimised websites and online stores. Browse our portfolio and start your project.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#14163A">
+<meta name="application-name" content="Jocelyn Web Designers">
+<meta name="apple-mobile-web-app-title" content="Jocelyn Web Designers">
+<link rel="canonical" href="https://www.jocelynwebdesigners.com/">
+
+<!-- ============ LOGO: browser tab, bookmarks, home screen, Google/Bing results ============
+     Keep Logo.jpg in the SAME folder as this file (root of the site), square, ideally 512x512.
+     Google needs the icon at a stable URL, square, and a multiple of 48px (48, 96, 144, 192 ... 512 is fine). -->
+<link rel="icon" href="Logo.jpg" type="image/jpeg" sizes="any">
+<link rel="shortcut icon" href="Logo.jpg" type="image/jpeg">
+<link rel="apple-touch-icon" href="Logo.jpg">
+
+<!-- Open Graph / social + link previews -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jocelyn Web Designers">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Jocelyn Web Designers | Web Design &amp; Development Studio">
+<meta property="og:description" content="Fast, mobile-friendly, search-optimised websites and online stores. See our work.">
+<meta property="og:url" content="https://www.jocelynwebdesigners.com/">
+<meta property="og:image" content="https://www.jocelynwebdesigners.com/Logo.jpg">
+<meta property="og:image:secure_url" content="https://www.jocelynwebdesigners.com/Logo.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Jocelyn Web Designers logo">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jocelyn Web Designers">
+<meta name="twitter:description" content="Fast, mobile-friendly, search-optimised websites and online stores.">
+<meta name="twitter:image" content="https://www.jocelynwebdesigners.com/Logo.jpg">
+<meta name="twitter:image:alt" content="Jocelyn Web Designers logo">
+
+<!-- Structured data: tells Google the site name and the brand logo -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.jocelynwebdesigners.com/#website",
+      "url": "https://www.jocelynwebdesigners.com/",
+      "name": "Jocelyn Web Designers",
+      "publisher": { "@id": "https://www.jocelynwebdesigners.com/#business" }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.jocelynwebdesigners.com/#business",
+      "name": "Jocelyn Web Designers",
+      "url": "https://www.jocelynwebdesigners.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.jocelynwebdesigners.com/Logo.jpg"
+      },
+      "image": "https://www.jocelynwebdesigners.com/Logo.jpg",
+      "description": "Web design and development studio building fast, mobile-friendly, search-optimised websites and online stores.",
+      "email": "empraemzo9@gmail.com",
+      "telephone": "+256727228128",
+      "sameAs": [
+        "https://www.facebook.com/jocelynwebdesigners",
+        "https://www.instagram.com/jocelynwebdesigners",
+        "https://www.tiktok.com/@jocelynwebdesigners"
+      ],
+      "serviceType": ["Web design", "Web development", "Online stores", "Search engine optimisation"]
+    }
+  ]
+}
+</script>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#EEF0FA;
+  --ink:#14163A;
+  --blue:#3B3FF0;
+  --lilac:#CFCBF7;
+  --sun:#FFC24B;
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --pad:clamp(1.25rem,5vw,4rem);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.6 var(--body);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{margin:0}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.hero :focus-visible,.tunnel :focus-visible,.contact :focus-visible,footer :focus-visible{outline-color:var(--sun)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:1rem;top:-4rem;z-index:100;background:var(--ink);color:#fff;padding:.6rem 1rem;border-radius:8px}
+.skip:focus{top:1rem}
+section[id]{scroll-margin-top:0}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-block;padding:.85rem 1.5rem;border:0;border-radius:999px;font:700 1rem var(--display);text-decoration:none;cursor:pointer;transition:transform .2s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-sun{background:var(--sun);color:var(--ink)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-line{background:transparent;box-shadow:inset 0 0 0 2px currentColor;color:#fff}
+.btn-sm{padding:.55rem 1.1rem;font-size:.95rem}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;z-index:50;top:max(.75rem,env(safe-area-inset-top));left:50%;transform:translateX(-50%);
+  width:min(calc(100% - 1.5rem),64rem);display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:.45rem .5rem .45rem 1rem;background:rgba(238,240,250,.93);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-radius:999px;box-shadow:0 8px 30px rgba(20,22,58,.22)}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;font:700 1.05rem var(--display)}
+.brand img{height:34px;width:auto;border-radius:4px}
+.nav ul{display:flex;align-items:center;gap:1.4rem;margin:0;padding:0;list-style:none;font-weight:600;font-size:.95rem}
+.nav ul a{text-decoration:none}
+.nav ul a:hover,.nav ul a:not(.btn)[aria-current="true"]{color:var(--blue)}
+@media (max-width:760px){.nav ul .hide-sm{display:none}}
+@media (max-width:420px){.brand span{font-size:.92rem}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;display:grid;align-items:end;min-height:100vh;min-height:100svh;background:var(--ink);color:#fff;overflow:hidden}
+.hero-bg{position:absolute;inset:-6%;z-index:0;will-change:transform}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(20,22,58,.35) 0%,rgba(20,22,58,.55) 45%,rgba(20,22,58,.92) 100%)}
+.hero-inner{position:relative;z-index:2;max-width:78rem;padding:9rem var(--pad) clamp(3rem,9vh,6rem);transform-origin:50% 100%;will-change:transform,opacity}
+.hero h1{max-width:12ch;margin-bottom:1.25rem;font:700 clamp(2.7rem,9vw,7rem)/.95 var(--display);letter-spacing:-.035em}
+.hero p{max-width:34rem;margin:0 0 2rem;font-size:1.2rem;color:#E4E6FA}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.8rem}
+
+/* ---------- project tunnel ---------- */
+.tunnel{background:var(--ink);color:#fff;padding:6rem var(--pad) 5rem}
+.tunnel-head h2,.section h2{font:700 clamp(2rem,5vw,3.6rem)/1 var(--display);letter-spacing:-.03em;margin-bottom:.75rem}
+.tunnel-head p{max-width:36rem;margin:0 0 3rem;color:#C9CCEE}
+.wins{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));margin:0;padding:0;list-style:none}
+.floor,.hud{display:none}
+
+.win article{overflow:hidden;background:var(--paper);color:var(--ink);border-radius:16px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.bar{display:flex;align-items:center;gap:.4rem;padding:.6rem .8rem;background:#DCDFF5}
+.bar i{width:.6rem;height:.6rem;border-radius:50%;background:#9EA3D6}
+.bar .url{flex:1;margin-left:.6rem;padding:.15rem .8rem;overflow:hidden;background:#fff;border-radius:999px;font-size:.8rem;color:#5A5E8C;white-space:nowrap;text-overflow:ellipsis}
+.shot{position:relative;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(135deg,var(--a),var(--b))}
+.shot::before,.shot::after{content:"";position:absolute;z-index:0;border-radius:8px}
+.shot::before{left:8%;top:14%;width:44%;height:14%;background:rgba(255,255,255,.88)}
+.shot::after{left:8%;top:34%;width:30%;height:8%;background:var(--c)}
+.shot img{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover}
+.cap{display:grid;gap:.3rem;padding:1rem 1.25rem 1.25rem}
+.cap h3{font:700 1.3rem/1.1 var(--display)}
+.cap p{margin:0;color:#4B4F7D;font-size:.98rem}
+.cap a{color:var(--blue);font-weight:700;text-decoration:none}
+.cap a:hover{text-decoration:underline}
+
+/* 3D mode (added by JS when motion is allowed) */
+.fx .tunnel{height:calc((var(--n) + 1) * 100vh);padding:0}
+.fx .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;perspective:1100px;perspective-origin:50% 45%}
+.fx .tunnel-head{position:absolute;z-index:3;top:5.5rem;left:var(--pad);right:var(--pad);pointer-events:none}
+.fx .tunnel-head p{margin:0}
+.fx .floor{display:block;position:absolute;left:-50%;right:-50%;bottom:0;height:75%;transform:rotateX(72deg);transform-origin:50% 100%;
+  background-image:linear-gradient(rgba(207,203,247,.25) 1px,transparent 1px),linear-gradient(90deg,rgba(207,203,247,.25) 1px,transparent 1px);
+  background-size:80px 80px;-webkit-mask-image:linear-gradient(to top,#000,transparent 85%);mask-image:linear-gradient(to top,#000,transparent 85%)}
+.fx .wins{position:absolute;inset:0;display:block;transform-style:preserve-3d}
+.fx .win{position:absolute;left:50%;top:50%;width:min(80vw,700px);will-change:transform,opacity}
+.fx .hud{display:flex;position:absolute;z-index:3;left:var(--pad);right:var(--pad);bottom:max(1.25rem,env(safe-area-inset-bottom));align-items:center;gap:1rem;font-weight:600}
+.hud-title{min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.hud-bar{flex:1;height:4px;overflow:hidden;background:rgba(255,255,255,.18);border-radius:4px}
+.hud-bar i{display:block;width:0;height:100%;background:var(--sun)}
+
+/* ---------- sections ---------- */
+.section{padding:clamp(4rem,10vw,8rem) var(--pad)}
+.wrap{max-width:74rem;margin:0 auto}
+.lead{max-width:38rem;margin:0 0 3rem;font-size:1.15rem}
+
+.services{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));margin:0;padding:0;list-style:none}
+.svc{padding:1.75rem;background:#fff;border-radius:20px;border-top:6px solid var(--blue);transform-origin:50% 100%}
+.svc:nth-child(2){border-top-color:var(--sun)}
+.svc:nth-child(3){border-top-color:var(--lilac)}
+.svc:nth-child(4){border-top-color:var(--ink)}
+.svc h3{margin-bottom:.5rem;font:700 1.4rem/1.1 var(--display)}
+.svc p{margin:0;color:#4B4F7D}
+
+.process{background:var(--lilac)}
+.steps{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));margin:0;padding:0;list-style:none;counter-reset:s}
+.steps li{counter-increment:s;padding-top:1rem;border-top:3px solid var(--ink)}
+.steps li::before{content:counter(s);display:block;margin-bottom:.5rem;font:700 3rem/1 var(--display);color:var(--blue)}
+.steps h3{margin-bottom:.4rem;font:700 1.3rem/1.1 var(--display)}
+.steps p{margin:0}
+
+/* ---------- contact & social ---------- */
+.contact{background:var(--ink);color:#fff}
+.contact .grid{display:grid;gap:3rem;align-items:start;grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr))}
+.contact p{margin:0 0 1rem;color:#C9CCEE}
+.direct{display:grid;gap:.6rem;margin:1.5rem 0 2rem;padding:0;list-style:none}
+.direct a{color:#fff;font-weight:700;text-decoration:none}
+.direct a:hover{text-decoration:underline}
+
+.social-title{font-size:1rem;font-weight:700;color:#E4E6FA;margin-bottom:.75rem;text-transform:uppercase;letter-spacing:.05em}
+.social-links{display:flex;flex-wrap:wrap;gap:.6rem;margin:0 0 1.5rem;padding:0;list-style:none}
+.social-links a{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem .9rem;background:rgba(255,255,255,.08);border-radius:999px;color:#fff;font-size:.9rem;font-weight:600;text-decoration:none;transition:background .2s ease,transform .2s ease}
+.social-links a:hover{background:var(--blue);transform:translateY(-2px)}
+.social-links svg{width:16px;height:16px;fill:currentColor}
+
+form{display:grid;gap:1rem}
+label{display:grid;gap:.35rem;font-weight:600}
+input,textarea{padding:.85rem 1rem;border:0;border-radius:12px;background:#fff;color:var(--ink);font:inherit}
+textarea{min-height:9rem;resize:vertical}
+.form-actions{display:flex;flex-wrap:wrap;gap:.8rem}
+.form-status{min-height:1.6em;margin:0;color:#E4E6FA}
+
+/* ---------- footer ---------- */
+footer{padding:2.5rem var(--pad);background:var(--ink);color:#C9CCEE;border-top:1px solid rgba(255,255,255,.12)}
+.foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;max-width:74rem;margin:0 auto}
+.foot .brand{padding:.3rem .9rem .3rem .5rem;background:var(--paper);color:var(--ink);border-radius:999px}
+.foot .brand img{height:28px}
+.foot nav{display:flex;gap:1.25rem;font-weight:600}
+.foot-social{display:flex;align-items:center;gap:.75rem}
+.foot-social a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);color:#fff;transition:background .2s ease}
+.foot-social a:hover{background:var(--sun);color:var(--ink)}
+.foot-social svg{width:18px;height:18px;fill:currentColor}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.social-links a,.foot-social a{transition:none}}
+</style>
+</head>
+
+<body>
+<!-- Icon sprite (defined once, reused in contact + footer) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.87 2.89 2.89 0 0 1-2.88-2.87 2.89 2.89 0 0 1 2.88-2.88c.28 0 .54.04.8.11V9.45a6.37 6.37 0 0 0-.8-.05A6.34 6.34 0 0 0 3.15 15.7 6.34 6.34 0 0 0 9.49 22a6.34 6.34 0 0 0 6.34-6.33V9.12a8.16 8.16 0 0 0 4.76 1.52v-3.4a4.85 4.85 0 0 1-1-.05z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav" aria-label="Main">
+  <a class="brand" href="#top" aria-label="Jocelyn Web Designers, home">
+    <img src="Logo.jpg" alt="Jocelyn Web Designers logo" width="34" height="34">
+    <span>Jocelyn Web Designers</span>
+  </a>
+  <ul>
+    <li class="hide-sm"><a href="#work">Work</a></li>
+    <li class="hide-sm"><a href="#services">Services</a></li>
+    <li class="hide-sm"><a href="#process">Process</a></li>
+    <li><a class="btn btn-blue btn-sm" href="#contact">Contact us</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-bg">
+    <img src="hero.jpg" alt="Jocelyn Web Designers web design studio" fetchpriority="high">
+  </div>
+  <div class="hero-inner">
+    <h1><span class="sr">Jocelyn Web Designers: </span>Websites people want to scroll.</h1>
+    <p>Jocelyn Web Designers builds fast, search-friendly websites and online stores that feel good to explore on any phone or computer.</p>
+    <div class="hero-cta">
+      <a class="btn btn-sun" href="#work">See our work</a>
+      <a class="btn btn-line" href="#contact">Start a project</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===== PORTFOLIO TUNNEL ===== -->
+  <section class="tunnel" id="work" style="--n:5" aria-labelledby="work-title">
+    <div class="stage">
+      <div class="floor" aria-hidden="true"></div>
+      <div class="tunnel-head">
+        <h2 id="work-title">Selected work</h2>
+        <p>Scroll or swipe to move through our projects.</p>
+      </div>
+
+      <ol class="wins">
+        <li class="win">
+          <article>
+            <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span class="url">hamimfurniture.vercel.app</span></div>
+            <div class="shot" style="--a:#2D1B18;--b:#8C5A3C;--c:#FFC24B">
+              <img src="images/project-1.jpg" alt="Hamim Furniture showcase site" loading="lazy">
+            </div>
+            <div class="cap">
+              <h3>Hamim Furniture</h3>
+              <p>Showcase website highlighting custom wood crafts, product catalogs, and custom inquiries.</p>
+              <a href="https://hamimfurniture.vercel.app/" target="_blank" rel="noopener">Visit Live Site &rarr;</a>
+            </div>
+          </article>
+        </li>
+        <li class="win">
+          <article>
+            <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span class="url">johamas.vercel.app</span></div>
+            <div class="shot" style="--a:#14163A;--b:#3B3FF0;--c:#CFCBF7">
+              <img src="images/project-2.jpg" alt="Joha Online commercial platform" loading="lazy">
+            </div>
+            <div class="cap">
+              <h3>Joha Online</h3>
+              <p>E-commerce and commercial store interface featuring responsive web components and quick loading times.</p>
+              <a href="https://johamas.vercel.app/" target="_blank" rel="noopener">Visit Live Site &rarr;</a>
+            </div>
+          </article>
+        </li>
+        <li class="win">
+          <article>
+            <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span class="url">school-demo.example</span></div>
+            <div class="shot" style="--a:#1F8A70;--b:#7BD3B4;--c:#FFC24B">
+              <img src="images/project-3.jpg" alt="Academic portal layout preview" loading="lazy">
+            </div>
+            <div class="cap">
+              <h3>Academy Portal</h3>
+              <p>Demonstration web template designed for educational institutions, admissions, and course directories.</p>
+              <a href="#contact">Start a project like this</a>
+            </div>
+          </article>
+        </li>
+        <li class="win">
+          <article>
+            <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span class="url">cafedemo.example</span></div>
+            <div class="shot" style="--a:#FF8A5B;--b:#FFC24B;--c:#14163A">
+              <img src="images/project-4.jpg" alt="Artisanal Cafe menu and location portal" loading="lazy">
+            </div>
+            <div class="cap">
+              <h3>Artisanal Cafe</h3>
+              <p>Demo site for local dining featuring interactive digital menus, table bookings, and location mapping.</p>
+              <a href="#contact">Start a project like this</a>
+            </div>
+          </article>
+        </li>
+        <li class="win">
+          <article>
+            <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span class="url">hardwaredemo.example</span></div>
+            <div class="shot" style="--a:#3B3FF0;--b:#8B8FFF;--c:#FFFFFF">
+              <img src="images/project-5.jpg" alt="Commercial Hardware inventory template" loading="lazy">
+            </div>
+            <div class="cap">
+              <h3>Commercial Hardware</h3>
+              <p>Template tailored for industrial supplier inventories, bulk order requests, and quote calculations.</p>
+              <a href="#contact">Start a project like this</a>
+            </div>
+          </article>
+        </li>
+      </ol>
+
+      <div class="hud" aria-hidden="true">
+        <span class="hud-count">1 / 5</span>
+        <span class="hud-title"></span>
+        <div class="hud-bar"><i></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="section" id="services" aria-labelledby="services-title">
+    <div class="wrap">
+      <h2 id="services-title">What we build</h2>
+      <p class="lead">Everything your business needs to look good and get found online.</p>
+      <ul class="services">
+        <li class="svc" data-tilt-in>
+          <h3>Website design</h3>
+          <p>Clear layouts and a look that fits your brand, designed for phones first.</p>
+        </li>
+        <li class="svc" data-tilt-in>
+          <h3>Web development</h3>
+          <p>Clean, fast code that loads quickly on slow connections and small screens.</p>
+        </li>
+        <li class="svc" data-tilt-in>
+          <h3>Online stores</h3>
+          <p>Product pages, carts and payment options so customers can buy without friction.</p>
+        </li>
+        <li class="svc" data-tilt-in>
+          <h3>Search visibility</h3>
+          <p>Page titles, structure and speed set up so Google and Bing can find and understand your site.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS ===== -->
+  <section class="section process" id="process" aria-labelledby="process-title">
+    <div class="wrap">
+      <h2 id="process-title">How we work</h2>
+      <p class="lead">Four steps from first call to a live site.</p>
+      <ol class="steps">
+        <li><h3>Listen</h3><p>We learn about your business, your customers and what you want the site to do.</p></li>
+        <li><h3>Design</h3><p>You review layouts and a clickable preview before anything is built.</p></li>
+        <li><h3>Build</h3><p>We code the site, test it on real phones and connect your domain.</p></li>
+        <li><h3>Launch and support</h3><p>We publish, submit your site to search engines and stay on hand for updates.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap grid">
+      <div>
+        <h2 id="contact-title">Tell us what you want to build</h2>
+        <p>Send a short message about your project and we will reply with next steps and a price range.</p>
+
+        <ul class="direct">
+          <li>Email: <a href="mailto:empraemzo9@gmail.com">empraemzo9@gmail.com</a></li>
+          <li>Phone / WhatsApp: <a href="https://wa.me/256727228128" target="_blank" rel="noopener">+256 727 228 128</a></li>
+        </ul>
+
+        <div class="social-title">Follow Jocelyn Web Designers</div>
+        <ul class="social-links">
+          <li><a href="https://www.tiktok.com/@jocelynwebdesigners" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-tiktok"/></svg><span>TikTok</span></a></li>
+          <li><a href="https://www.instagram.com/jocelynwebdesigners" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-instagram"/></svg><span>Instagram</span></a></li>
+          <li><a href="https://www.facebook.com/jocelynwebdesigners" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-facebook"/></svg><span>Facebook</span></a></li>
+          <li><a href="https://wa.me/256727228128" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-whatsapp"/></svg><span>WhatsApp</span></a></li>
+        </ul>
+      </div>
+
+      <form id="lead" novalidate>
+        <label>Your name <input name="name" type="text" autocomplete="name" maxlength="80" required></label>
+        <label>Your email <input name="email" type="email" autocomplete="email" maxlength="120" required></label>
+        <label>About your project <textarea name="message" maxlength="1500" required></textarea></label>
+        <div class="form-actions">
+          <button class="btn btn-sun" type="submit">Send by email</button>
+          <button class="btn btn-line" type="button" id="wa-send">Send on WhatsApp</button>
+        </div>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <a class="brand" href="#top" aria-label="Jocelyn Web Designers, back to top">
+      <img src="Logo.jpg" alt="Jocelyn Web Designers logo" width="28" height="28"><span>Jocelyn Web Designers</span>
+    </a>
+
+    <nav aria-label="Footer">
+      <a href="#work">Work</a><a href="#services">Services</a><a href="#contact">Contact</a>
+    </nav>
+
+    <div class="foot-social">
+      <a href="https://www.tiktok.com/@jocelynwebdesigners" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-tiktok"/></svg></a>
+      <a href="https://www.instagram.com/jocelynwebdesigners" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+      <a href="https://www.facebook.com/jocelynwebdesigners" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+      <a href="https://wa.me/256727228128" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-whatsapp"/></svg></a>
+    </div>
+
+    <small>&copy; <span id="yr">2026</span> Jocelyn Web Designers</small>
+  </div>
+</footer>
+
+<script>
+(() => {
+  "use strict";
+
+  const CONTACT_EMAIL = "empraemzo9@gmail.com";
+  const WHATSAPP_NUMBER = "256727228128";
+
+  const root = document.documentElement;
+  const $  = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const pageTop = el => { let t = 0; for (; el; el = el.offsetParent) t += el.offsetTop; return t; }; // ignores CSS transforms
+
+  /* ---------- basics ---------- */
+  $("#yr").textContent = new Date().getFullYear();
+
+  // If any image fails to load (logo, hero, project shots) hide it so no broken-image icon shows.
+  // Project shots fall back to their gradient placeholder.
+  $$("img").forEach(img => {
+    const hide = () => { img.style.visibility = "hidden"; };
+    img.addEventListener("error", hide, { once: true });
+    if (img.complete && img.naturalWidth === 0 && img.currentSrc) hide();
+  });
+
+  /* ---------- contact form: email or WhatsApp, with validation + status ---------- */
+  const form   = $("#lead");
+  const status = $("#form-status");
+  const waBtn  = $("#wa-send");
+
+  function readForm() {
+    if (!form.checkValidity()) { form.reportValidity(); return null; }
+    const d = new FormData(form);
+    return {
+      name:    String(d.get("name")).trim(),
+      email:   String(d.get("email")).trim(),
+      message: String(d.get("message")).trim()
+    };
+  }
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const f = readForm();
+    if (!f) return;
+    const subject = encodeURIComponent("Project enquiry from " + f.name);
+    const body    = encodeURIComponent(`${f.message}\n\n${f.name}\n${f.email}`);
+    status.textContent = "Opening your email app. If nothing opens, email " + CONTACT_EMAIL + " or use WhatsApp.";
+    location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  });
+
+  waBtn.addEventListener("click", () => {
+    const f = readForm();
+    if (!f) return;
+    const text = encodeURIComponent(`Hi Jocelyn Web Designers, I'm ${f.name} (${f.email}).\n\n${f.message}`);
+    status.textContent = "Opening WhatsApp.";
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, "_blank", "noopener");
+  });
+
+  /* ---------- highlight the current section in the nav ---------- */
+  if ("IntersectionObserver" in window) {
+    const links = new Map($$('.nav ul a[href^="#"]').map(a => [a.getAttribute("href").slice(1), a]));
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        links.forEach(a => a.removeAttribute("aria-current"));
+        const a = links.get(en.target.id);
+        if (a) a.setAttribute("aria-current", "true");
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    links.forEach((_, id) => { const s = document.getElementById(id); if (s) io.observe(s); });
+  }
+
+  /* ---------- 3D scroll effects ---------- */
+  const mqReduce  = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const hero      = $(".hero");
+  const heroInner = $(".hero-inner");
+  const heroBg    = $(".hero-bg");
+  const tunnel    = $(".tunnel");
+  const stage     = $(".stage", tunnel);
+  const floor     = $(".floor", tunnel);
+  const cards     = $$(".win", tunnel);
+  const titles    = cards.map(c => $("h3", c).textContent);
+  const hudCount  = $(".hud-count", tunnel);
+  const hudTitle  = $(".hud-title", tunnel);
+  const hudBar    = $(".hud-bar i", tunnel);
+  const tilts     = $$("[data-tilt-in]");
+  const N = cards.length;
+
+  let fx = false, ticking = false;
+  let vw = innerWidth, vh = innerHeight;
+  let heroH = 0, tTop = 0, tH = 0, stageH = 0, tiltTops = [];
+  let lastIdx = -1, lastHp = -1;
+
+  // Read layout once (and on resize) instead of on every scroll frame.
+  function measure() {
+    heroH  = hero.offsetHeight;
+    tTop   = pageTop(tunnel);
+    tH     = tunnel.offsetHeight;
+    stageH = stage.offsetHeight;
+    tiltTops = tilts.map(pageTop);
+  }
+
+  function frame() {
+    ticking = false;
+    const y = scrollY;
+
+    /* hero perspective tilt */
+    const hp = clamp(y / (heroH * 0.85));
+    if (hp !== lastHp) {
+      lastHp = hp;
+      heroInner.style.transform = `perspective(1200px) translate3d(0,${(-hp * 70).toFixed(1)}px,${(-hp * 180).toFixed(1)}px) rotateX(${(hp * 16).toFixed(2)}deg)`;
+      heroInner.style.opacity = Math.max(0, 1 - hp * 1.15).toFixed(3);
+      heroBg.style.transform = `translate3d(0,${(hp * 6).toFixed(2)}%,0) scale(${(1 + hp * 0.22).toFixed(3)})`;
+    }
+
+    /* portfolio tunnel fly-through */
+    const top = tTop - y;
+    const travel = Math.max(1, tH - stageH);
+    if (top + tH > -vh && top < vh * 2) {
+      const p   = clamp(-top / travel);
+      const pos = clamp((p - 0.02) / 0.96) * (N - 1);
+      const gap = Math.min(760, stageH * 0.95);
+      const spread = vw < 700 ? vw * 0.16 : Math.min(vw * 0.3, 440);
+
+      cards.forEach((el, i) => {
+        const z    = (pos - i) * gap;
+        const t    = clamp(Math.abs(z) / gap, 0, 1.6);
+        const side = i % 2 ? 1 : -1;
+        const x    = side * spread * t;
+        const yy   = Math.sin(i * 2.1) * stageH * 0.04;
+        const rot  = -side * 24 * Math.min(t, 1);
+        const op   = z < 0
+          ? 1 - clamp((-z - gap * 0.4) / (gap * 1.8))
+          : 1 - clamp(z / (gap * 0.6));
+
+        el.style.transform = `translate(-50%,-50%) translate3d(${x.toFixed(1)}px,${yy.toFixed(1)}px,${z.toFixed(1)}px) rotateY(${rot.toFixed(2)}deg)`;
+        el.style.opacity = op.toFixed(3);
+        el.style.visibility = op <= 0.01 ? "hidden" : "visible";
+        el.style.pointerEvents = Math.abs(z) < gap * 0.3 ? "auto" : "none";
+      });
+
+      floor.style.backgroundPosition = `0 ${(pos * gap * 0.35).toFixed(0)}px`;
+      hudBar.style.width = (p * 100).toFixed(1) + "%";
+      const idx = Math.round(pos);
+      if (idx !== lastIdx) {
+        lastIdx = idx;
+        hudCount.textContent = `${idx + 1} / ${N}`;
+        hudTitle.textContent = titles[idx];
+      }
+    }
+
+    /* service cards rise into place (only touches cards near the viewport) */
+    tilts.forEach((el, i) => {
+      const b = tiltTops[i] - y;
+      if (b > vh * 2 || b < -vh) return;
+      const q = clamp((vh - b) / (vh * 0.55));
+      if (q === el._q) return;
+      el._q = q;
+      if (q >= 1) { el.style.transform = "none"; el.style.opacity = "1"; return; }
+      el.style.transform = `perspective(900px) translateY(${((1 - q) * 40).toFixed(1)}px) rotateX(${((1 - q) * 30).toFixed(2)}deg)`;
+      el.style.opacity = (0.25 + 0.75 * q).toFixed(3);
+    });
+  }
+
+  const request = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
+
+  let lastW = vw;
+  function onResize() {
+    vw = innerWidth; vh = innerHeight;
+    if (vw !== lastW) { lastW = vw; measure(); }   // ignore mobile address-bar height jitter
+    request();
+  }
+
+  // Tabbing to a project link brings that project to the front of the tunnel.
+  function onFocusIn(e) {
+    const card = e.target.closest && e.target.closest(".win");
+    if (!card) return;
+    const i = cards.indexOf(card);
+    if (i < 0 || i === lastIdx) return;
+    const p = (i / (N - 1)) * 0.96 + 0.02;
+    scrollTo({ top: tTop + p * Math.max(1, tH - stageH) });
+  }
+
+  let ro = null;
+  function enable() {
+    if (fx) return;
+    fx = true;
+    tunnel.style.setProperty("--n", N);
+    root.classList.add("fx");
+    measure();
+    lastIdx = -1; lastHp = -1;
+    addEventListener("scroll", request, { passive: true });
+    addEventListener("resize", onResize);
+    tunnel.addEventListener("focusin", onFocusIn);
+    if ("ResizeObserver" in window) {
+      ro = new ResizeObserver(() => { measure(); request(); });
+      ro.observe(document.body);              // re-measure when fonts/images change the layout
+    }
+    frame();
+  }
+
+  function disable() {
+    if (!fx) return;
+    fx = false;
+    root.classList.remove("fx");
+    removeEventListener("scroll", request);
+    removeEventListener("resize", onResize);
+    tunnel.removeEventListener("focusin", onFocusIn);
+    if (ro) { ro.disconnect(); ro = null; }
+    [heroInner, heroBg, ...cards, ...tilts].forEach(el => { el.removeAttribute("style"); delete el._q; });
+  }
+
+  const sync = () => (mqReduce.matches ? disable() : enable());
+  mqReduce.addEventListener ? mqReduce.addEventListener("change", sync) : mqReduce.addListener(sync);
+  sync();
+  addEventListener("load", () => { if (fx) { measure(); request(); } });
+})();
+</script>
+</body>
+</html>
