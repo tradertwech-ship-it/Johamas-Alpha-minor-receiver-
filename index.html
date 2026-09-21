@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<!-- ============ SEO & META TAGS ============ -->
+<title>Jocelyn Web Designers | Web Design &amp; Development Studio</title>
+<meta name="description" content="Jocelyn Web Designers builds fast, mobile-friendly, search-optimised websites and online stores. Browse our portfolio and start your project.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#14163A">
+<link rel="canonical" href="https://www.jocelynwebdesigners.com/">
+
+<!-- Favicons for Google Search & Browser Tabs -->
+<link rel="icon" href="logo.jpg" type="image/jpeg" sizes="any">
+<link rel="apple-touch-icon" href="logo.jpg">
+
+<!-- Open Graph / Social Media & Search Engine Image Previews -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jocelyn Web Designers">
+<meta property="og:title" content="Jocelyn Web Designers | Web Design &amp; Development Studio">
+<meta property="og:description" content="Fast, mobile-friendly, search-optimised websites and online stores. See our work.">
+<meta property="og:url" content="https://www.jocelynwebdesigners.com/">
+<meta property="og:image" content="https://www.jocelynwebdesigners.com/logo.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jocelyn Web Designers">
+<meta name="twitter:description" content="Fast, mobile-friendly, search-optimised websites and online stores.">
+<meta name="twitter:image" content="https://www.jocelynwebdesigners.com/logo.jpg">
+
+<!-- Structured Data (JSON-LD for Google Brand Logo & Service Metadata) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Jocelyn Web Designers",
+  "url": "https://www.jocelynwebdesigners.com/",
+  "logo": "https://www.jocelynwebdesigners.com/logo.jpg",
+  "image": "https://www.jocelynwebdesigners.com/logo.jpg",
+  "description": "Web design and development studio building fast, mobile-friendly, search-optimised websites and online stores.",
+  "email": "empraemzo9@gmail.com",
+  "telephone": "+256727228128",
+  "serviceType": ["Web design", "Web development", "Online stores", "Search engine optimisation"]
+}
+</script>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#EEF0FA;
+  --ink:#14163A;
+  --blue:#3B3FF0;
+  --lilac:#CFCBF7;
+  --sun:#FFC24B;
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --pad:clamp(1.25rem,5vw,4rem);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.6 var(--body);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{margin:0}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.hero :focus-visible,.tunnel :focus-visible,.contact :focus-visible,footer :focus-visible{outline-color:var(--sun)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:1rem;top:-4rem;z-index:100;background:var(--ink);color:#fff;padding:.6rem 1rem;border-radius:8px}
+.skip:focus{top:1rem}
+section[id]{scroll-margin-top:0}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-block;padding:.85rem 1.5rem;border:0;border-radius:999px;font:700 1rem var(--display);text-decoration:none;cursor:pointer;transition:transform .2s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-sun{background:var(--sun);color:var(--ink)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-line{box-shadow:inset 0 0 0 2px currentColor;color:#fff}
+.btn-sm{padding:.55rem 1.1rem;font-size:.95rem}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;z-index:50;top:max(.75rem,env(safe-area-inset-top));left:50%;transform:translateX(-50%);
+  width:min(calc(100% - 1.5rem),64rem);display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:.45rem .5rem .45rem 1rem;background:rgba(238,240,250,.93);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-radius:999px;box-shadow:0 8px 30px rgba(20,22,58,.22)}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;font:700 1.05rem var(--display)}
+.brand img{height:34px;width:auto}
+.nav ul{display:flex;align-items:center;gap:1.4rem;margin:0;padding:0;list-style:none;font-weight:600;font-size:.95rem}
+.nav ul a{text-decoration:none}
+.nav ul a:hover{color:var(--blue)}
+@media (max-width:760px){.nav ul .hide-sm{display:none}}
+@media (max-width:420px){.brand span{font-size:.92rem}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;display:grid;align-items:end;min-height:100vh;min-height:100svh;background:var(--ink);color:#fff;overflow:hidden}
+.hero-bg{position:absolute;inset:-6%;z-index:0;will-change:transform}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(20,22,58,.35) 0%,rgba(20,22,58,.55) 45%,rgba(20,22,58,.92) 100%)}
+.hero-inner{position:relative;z-index:2;max-width:78rem;padding:9rem var(--pad) clamp(3rem,9vh,6rem);transform-origin:50% 100%;will-change:transform,opacity}
+.hero h1{max-width:12ch;margin-bottom:1.25rem;font:700 clamp(2.7rem,9vw,7rem)/.95 var(--display);letter-spacing:-.035em}
+.hero p{max-width:34rem;margin:0 0 2rem;font-size:1.2rem;color:#E4E6FA}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.8rem}
+
+/* ---------- project tunnel ---------- */
+.tunnel{background:var(--ink);color:#fff;padding:6rem var(--pad) 5rem}
+.tunnel-head h2,.section h2{font:700 clamp(2rem,5vw,3.6rem)/1 var(--display);letter-spacing:-.03em;margin-bottom:.75rem}
+.tunnel-head p{max-width:36rem;margin:0 0 3rem;color:#C9CCEE}
+.wins{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));margin:0;padding:0;list-style:none}
+.floor,.hud{display:none}
+
+.win article{overflow:hidden;background:var(--paper);color:var(--ink);border-radius:16px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.bar{display:flex;align-items:center;gap:.4rem;padding:.6rem .8rem;background:#DCDFF5}
+.bar i{width:.6rem;height:.6rem;border-radius:50%;background:#9EA3D6}
+.bar .url{flex:1;margin-left:.6rem;padding:.15rem .8rem;overflow:hidden;background:#fff;border-radius:999px;font-size:.8rem;color:#5A5E8C;white-space:nowrap;text-overflow:ellipsis}
+.shot{position:relative;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(135deg,var(--a),var(--b))}
+.shot::before,.shot::after{content:"";position:absolute;z-index:0;border-radius:8px}
+.shot::before{left:8%;top:14%;width:44%;height:14%;background:rgba(255,255,255,.88)}
+.shot::after{left:8%;top:34%;width:30%;height:8%;background:var(--c)}
+.shot img{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover}
+.cap{display:grid;gap:.3rem;padding:1rem 1.25rem 1.25rem}
+.cap h3{font:700 1.3rem/1.1 var(--display)}
+.cap p{margin:0;color:#4B4F7D;font-size:.98rem}
+.cap a{color:var(--blue);font-weight:700;text-decoration:none}
+.cap a:hover{text-decoration:underline}
+
+/* 3D mode (added by JS when motion is allowed) */
+.fx .tunnel{height:calc((var(--n) + 1) * 100vh);padding:0}
+.fx .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;perspective:1100px;perspective-origin:50% 45%}
+.fx .tunnel-head{position:absolute;z-index:3;top:5.5rem;left:var(--pad);right:var(--pad);pointer-events:none}
+.fx .tunnel-head p{margin:0}
+.fx .floor{display:block;position:absolute;left:-50%;right:-50%;bottom:0;height:75%;transform:rotateX(72deg);transform-origin:50% 100%;
+  background-image:linear-gradient(rgba(207,203,247,.25) 1px,transparent 1px),linear-gradient(90deg,rgba(207,203,247,.25) 1px,transparent 1px);
+  background-size:80px 80px;-webkit-mask-image:linear-gradient(to top,#000,transparent 85%);mask-image:linear-gradient(to top,#000,transparent 85%)}
+.fx .wins{position:absolute;inset:0;display:block;transform-style:preserve-3d}
+.fx .win{position:absolute;left:50%;top:50%;width:min(80vw,700px);will-change:transform,opacity}
+.fx .hud{display:flex;position:absolute;z-index:3;left:var(--pad);right:var(--pad);bottom:max(1.25rem,env(safe-area-inset-bottom));align-items:center;gap:1rem;font-weight:600}
+.hud-title{min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.hud-bar{flex:1;height:4px;overflow:hidden;background:rgba(255,255,255,.18);border-radius:4px}
+.hud-bar i{display:block;width:0;height:100%;background:var(--sun)}
+
+/* ---------- sections ---------- */
+.section{padding:clamp(4rem,10vw,8rem) var(--pad)}
+.wrap{max-width:74rem;margin:0 auto}
+.lead{max-width:38rem;margin:0 0 3rem;font-size:1.15rem}
+
+.services{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));margin:0;padding:0;list-style:none}
+.svc{padding:1.75rem;background:#fff;border-radius:20px;border-top:6px solid var(--blue);transform-origin:50% 100%}
+.svc:nth-child(2){border-top-color:var(--sun)}
+.svc:nth-child(3){border-top-color:var(--lilac)}
+.svc:nth-child(4){border-top-color:var(--ink)}
+.svc h3{margin-bottom:.5rem;font:700 1.4rem/1.1 var(--display)}
+.svc p{margin:0;color:#4B4F7D}
+
+.process{background:var(--lilac)}
+.steps{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));margin:0;padding:0;list-style:none;counter-reset:s}
+.steps li{counter-increment:s;padding-top:1rem;border-top:3px solid var(--ink)}
+.steps li::before{content:counter(s);display:block;margin-bottom:.5rem;font:700 3rem/1 var(--display);color:var(--blue)}
+.steps h3{margin-bottom:.4rem;font:700 1.3rem/1.1 var(--display)}
+.steps p{margin:0}
+
+.contact{background:var(--ink);color:#fff}
+.contact .grid{display:grid;gap:3rem;align-items:start;grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr))}
+.contact p{margin:0 0 1rem;color:#C9CCEE}
+.direct{display:grid;gap:.4rem;margin:1.5rem 0 0;padding:0;list-style:none}
+.direct a{color:#fff;font-weight:700}
+form{display:grid;gap:1rem}
+label{display:grid;gap:.35rem;font-weight:600}
+input,textarea{padding:.85rem 1rem;border:0;border-radius:12px;background:#fff;color:var(--ink);font:inherit}
+textarea{min-height:9rem;resize:vertical}
+
+footer{padding:2rem var(--pad);background:var(--ink);color:#C9CCEE;border-top:1px solid rgba(255,255,255,.12)}
+.foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;max-width:74rem;margin:0 auto}
+.foot .brand{padding:.3rem .9rem .3rem .5rem;background:var(--paper);color:var(--ink);border-radius:999px}
+.foot .brand img{height:28px}
+.foot nav{display:flex;gap:1.25rem;font-weight:600}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav" aria-label="Main">
+  <a class="brand" href="#top" aria-label="Jocelyn Web Designers, home">
+    <img src="logo.jpg" alt="Jocelyn Web Designers logo" height="34">
+    <span>Jocelyn Web Designers</span>
+  </a>
+  <ul>
+    <li class="hide-sm"><a href="#work">Work</a></li>
+    <li class="hide-sm"><a href="#services">Services</a></li>
+    <li class="hide-sm"><a href="#process">Process</a></li>
+    <li><a class="btn btn-blue btn-sm" href="#contact">Contact us</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-bg">
+    <img src="hero.jpg" alt="Jocelyn Web Designers web design studio" fetchpriority="high" onerror="this.remove()">
+  </div>
+  <div class="hero-inner">
+    <h1><span class="sr">Jocelyn Web Designers: </span>Websites people want to scroll.</h1>
+    <p>Jocelyn Web Designers builds fast, search-friendly websites and online stores that feel good to explore on any phone or computer.</p>
+    <div class="hero-cta">
+      <a class="btn btn-sun" href="#work">See our work</a>
+      <a class="btn btn-line" href="#contact">Start a project</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===== PORTFOLIO TUNNEL ===== -->
+  <section class="tunnel" id="work" style="--n:5" aria-labelledby="work-title">
+    <div class="stage">
+      <div class="floor" aria-hidden="true"></div>
+      <div class="tunnel-head">
+        <h2 id="work-title">Selected work</h2>
+        <p>Scroll or swipe to move through our projects.</p>
+      </div>
+
+      <ol class="wins">
+        <li class="win">
+          <article>
+            <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span class="url">hamimfurniture.vercel.app</span></div>
+            <div class="shot" style="--a:#2D1B18;--b:#8C5A3C;--c:#FFC24B">
+              <img src="images/project-1.jpg" alt="Hamim Furniture showcase site" loading="lazy" onerror="this.remove()">
+            </div>
+            <div class="cap">
+              <h3>Hamim Furniture</h3>
+              <p>Showcase website highlighting custom wood crafts, product catalogs, and custom inquiries.</p>
+              <a href="https://hamimfurniture.vercel.app/" target="_blank" rel="noopener">Visit Live Site &rarr;</a>
+            </div>
+          </article>
+        </li>
+        <li class="win">
+          <article>
+            <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span class="url">johamas.vercel.app</span></div>
+            <div class="shot" style="--a:#14163A;--b:#3B3FF0;--c:#CFCBF7">
+              <img src="images/project-2.jpg" alt="Joha Online commercial platform" loading="lazy" onerror="this.remove()">
+            </div>
+            <div class="cap">
+              <h3>Joha Online</h3>
+              <p>E-commerce and commercial store interface featuring responsive web components and quick loading times.</p>
+              <a href="https://johamas.vercel.app/" target="_blank" rel="noopener">Visit Live Site &rarr;</a>
+            </div>
+          </article>
+        </li>
+        <li class="win">
+          <article>
+            <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span class="url">school-demo.example</span></div>
+            <div class="shot" style="--a:#1F8A70;--b:#7BD3B4;--c:#FFC24B">
+              <img src="images/project-3.jpg" alt="Academic portal layout preview" loading="lazy" onerror="this.remove()">
+            </div>
+            <div class="cap">
+              <h3>Academy Portal</h3>
+              <p>Demonstration web template designed for educational institutions, admissions, and course directories.</p>
+              <a href="#contact">Start a project like this</a>
+            </div>
+          </article>
+        </li>
+        <li class="win">
+          <article>
+            <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span class="url">cafedemo.example</span></div>
+            <div class="shot" style="--a:#FF8A5B;--b:#FFC24B;--c:#14163A">
+              <img src="images/project-4.jpg" alt="Artisanal Cafe menu and location portal" loading="lazy" onerror="this.remove()">
+            </div>
+            <div class="cap">
+              <h3>Artisanal Cafe</h3>
+              <p>Demo site for local dining featuring interactive digital menus, table bookings, and location mapping.</p>
+              <a href="#contact">Start a project like this</a>
+            </div>
+          </article>
+        </li>
+        <li class="win">
+          <article>
+            <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span class="url">hardwaredemo.example</span></div>
+            <div class="shot" style="--a:#3B3FF0;--b:#8B8FFF;--c:#FFFFFF">
+              <img src="images/project-5.jpg" alt="Commercial Hardware inventory template" loading="lazy" onerror="this.remove()">
+            </div>
+            <div class="cap">
+              <h3>Commercial Hardware</h3>
+              <p>Template tailored for industrial supplier inventories, bulk order requests, and quote calculations.</p>
+              <a href="#contact">Start a project like this</a>
+            </div>
+          </article>
+        </li>
+      </ol>
+
+      <div class="hud" aria-hidden="true">
+        <span class="hud-count">1 / 5</span>
+        <span class="hud-title"></span>
+        <div class="hud-bar"><i></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="section" id="services" aria-labelledby="services-title">
+    <div class="wrap">
+      <h2 id="services-title">What we build</h2>
+      <p class="lead">Everything your business needs to look good and get found online.</p>
+      <ul class="services">
+        <li class="svc" data-tilt-in>
+          <h3>Website design</h3>
+          <p>Clear layouts and a look that fits your brand, designed for phones first.</p>
+        </li>
+        <li class="svc" data-tilt-in>
+          <h3>Web development</h3>
+          <p>Clean, fast code that loads quickly on slow connections and small screens.</p>
+        </li>
+        <li class="svc" data-tilt-in>
+          <h3>Online stores</h3>
+          <p>Product pages, carts and payment options so customers can buy without friction.</p>
+        </li>
+        <li class="svc" data-tilt-in>
+          <h3>Search visibility</h3>
+          <p>Page titles, structure and speed set up so Google and Bing can find and understand your site.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS ===== -->
+  <section class="section process" id="process" aria-labelledby="process-title">
+    <div class="wrap">
+      <h2 id="process-title">How we work</h2>
+      <p class="lead">Four steps from first call to a live site.</p>
+      <ol class="steps">
+        <li><h3>Listen</h3><p>We learn about your business, your customers and what you want the site to do.</p></li>
+        <li><h3>Design</h3><p>You review layouts and a clickable preview before anything is built.</p></li>
+        <li><h3>Build</h3><p>We code the site, test it on real phones and connect your domain.</p></li>
+        <li><h3>Launch and support</h3><p>We publish, submit your site to search engines and stay on hand for updates.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap grid">
+      <div>
+        <h2 id="contact-title">Tell us what you want to build</h2>
+        <p>Send a short message about your project and we will reply with next steps and a price range.</p>
+        <ul class="direct">
+          <li>Email: <a href="mailto:empraemzo9@gmail.com">empraemzo9@gmail.com</a></li>
+          <li>Phone: <a href="tel:+256727228128">0727228128</a></li>
+        </ul>
+      </div>
+      <form id="lead">
+        <label>Your name <input name="name" type="text" autocomplete="name" required></label>
+        <label>Your email <input name="email" type="email" autocomplete="email" required></label>
+        <label>About your project <textarea name="message" required></textarea></label>
+        <button class="btn btn-sun" type="submit">Send message</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <a class="brand" href="#top" aria-label="Jocelyn Web Designers, back to top">
+      <img src="logo.jpg" alt="Jocelyn Web Designers Logo" height="28"><span>Jocelyn Web Designers</span>
+    </a>
+    <nav aria-label="Footer">
+      <a href="#work">Work</a><a href="#services">Services</a><a href="#contact">Contact</a>
+    </nav>
+    <small>&copy; <span id="yr">2026</span> Jocelyn Web Designers</small>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const CONTACT_EMAIL = "empraemzo9@gmail.com";
+
+  const root   = document.documentElement;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const clamp  = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  /* contact form -> opens visitor's email app pre-addressed to empraemzo9@gmail.com */
+  document.getElementById("lead").addEventListener("submit", e => {
+    e.preventDefault();
+    const d = new FormData(e.target);
+    const subject = encodeURIComponent("Project enquiry from " + d.get("name"));
+    const body = encodeURIComponent(d.get("message") + "\n\n" + d.get("name") + "\n" + d.get("email"));
+    location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+  });
+
+  if (reduce) return;
+  root.classList.add("fx");
+
+  const hero      = document.querySelector(".hero");
+  const heroInner = document.querySelector(".hero-inner");
+  const heroBg    = document.querySelector(".hero-bg");
+  const tunnel    = document.querySelector(".tunnel");
+  const stage     = tunnel.querySelector(".stage");
+  const floor     = tunnel.querySelector(".floor");
+  const cards     = [...tunnel.querySelectorAll(".win")];
+  const hudCount  = tunnel.querySelector(".hud-count");
+  const hudTitle  = tunnel.querySelector(".hud-title");
+  const hudBar    = tunnel.querySelector(".hud-bar i");
+  const tilts     = [...document.querySelectorAll("[data-tilt-in]")];
+  const N = cards.length;
+
+  let vw = innerWidth, vh = innerHeight, ticking = false, lastIdx = -1;
+
+  function frame() {
+    ticking = false;
+    const y = window.scrollY;
+
+    /* hero perspective tilt */
+    const hp = clamp(y / (hero.offsetHeight * 0.85));
+    heroInner.style.transform = `perspective(1200px) translate3d(0,${(-hp * 70).toFixed(1)}px,${(-hp * 180).toFixed(1)}px) rotateX(${(hp * 16).toFixed(2)}deg)`;
+    heroInner.style.opacity = Math.max(0, 1 - hp * 1.15).toFixed(3);
+    heroBg.style.transform = `translate3d(0,${(hp * 6).toFixed(2)}%,0) scale(${(1 + hp * 0.22).toFixed(3)})`;
+
+    /* portfolio tunnel fly-through */
+    const r = tunnel.getBoundingClientRect();
+    if (r.bottom > -vh && r.top < vh * 2) {
+      const p   = clamp(-r.top / (r.height - stage.offsetHeight));
+      const pos = clamp((p - 0.02) / 0.96) * (N - 1);
+      const gap = Math.min(760, stage.offsetHeight * 0.95);
+      const spread = vw < 700 ? vw * 0.16 : Math.min(vw * 0.3, 440);
+
+      cards.forEach((el, i) => {
+        const z    = (pos - i) * gap;
+        const t    = clamp(Math.abs(z) / gap, 0, 1.6);
+        const side = i % 2 ? 1 : -1;
+        const x    = side * spread * t;
+        const yy   = Math.sin(i * 2.1) * stage.offsetHeight * 0.04;
+        const rot  = -side * 24 * Math.min(t, 1);
+        const op   = z < 0
+          ? 1 - clamp((-z - gap * 0.4) / (gap * 1.8))
+          : 1 - clamp(z / (gap * 0.6));
+
+        el.style.transform = `translate(-50%,-50%) translate3d(${x.toFixed(1)}px,${yy.toFixed(1)}px,${z.toFixed(1)}px) rotateY(${rot.toFixed(2)}deg)`;
+        el.style.opacity = op.toFixed(3);
+        el.style.visibility = op <= 0.01 ? "hidden" : "visible";
+        el.style.pointerEvents = Math.abs(z) < gap * 0.3 ? "auto" : "none";
+      });
+
+      floor.style.backgroundPosition = `0 ${(pos * gap * 0.35).toFixed(0)}px`;
+      hudBar.style.width = (p * 100).toFixed(1) + "%";
+      const idx = Math.round(pos);
+      if (idx !== lastIdx) {
+        lastIdx = idx;
+        hudCount.textContent = `${idx + 1} / ${N}`;
+        hudTitle.textContent = cards[idx].querySelector("h3").textContent;
+      }
+    }
+
+    /* service card tilt */
+    tilts.forEach(el => {
+      const b = el.getBoundingClientRect();
+      const q = clamp((vh - b.top) / (vh * 0.55));
+      el.style.transform = `perspective(900px) translateY(${((1 - q) * 40).toFixed(1)}px) rotateX(${((1 - q) * 30).toFixed(2)}deg)`;
+      el.style.opacity = (0.25 + 0.75 * q).toFixed(3);
+    });
+  }
+
+  const request = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
+  addEventListener("scroll", request, { passive: true });
+  addEventListener("resize", () => { vw = innerWidth; vh = innerHeight; request(); });
+  frame();
+})();
+</script>
+</body>
+</html>
